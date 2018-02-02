@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html id="page" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>
+        Course Website Registration
+    </title>
+
+
+
+</head>
+
+<div id="class"></div>
+
+<button id="enroll"> Enroll </button>
+
+
+<body>
+
+    <script>
+        var getUrlParameter = function getUrlParameter(sParam) {
+            var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+                sURLVariables = sPageURL.split('&'),
+                sParameterName,
+                i;
+
+            for (i = 0; i < sURLVariables.length; i++) {
+                sParameterName = sURLVariables[i].split('=');
+
+                if (sParameterName[0] === sParam) {
+                    return sParameterName[1] === undefined ? true : sParameterName[1];
+                }
+            }
+        };
+
+        function getclass(careerId) {
+            $.get("./api/getclass.php?id=" + careerId, function (data) {
+                // $(".result").html(data);
+                console.log(data);
+                //  alert("Load was performed.");
+                data = JSON.parse(data);
+
+                $.each(data, function (key, value) {
+                    var avail = parseInt(value.seats_total) - parseInt(value.seats_taken);
+                    $("#class").append('<div> <a href=' + "./registration.php?id=" + value.id +
+                        '><img src=' + value.image + '/> </a> <br>' + value.id +
+                        "  name : " + value.name + " description : " + value.description +
+                        " credit: " + value.credit_hours + " seats available :" + avail +
+                        '</div > <br/>');
+                });
+            });
+
+        }
+        var id = getUrlParameter('id');
+        console.log(id);
+        getclass(id);
+
+        $('#enroll').click(function () {
+            $.post("./api/enroll.php", {
+                    id: id
+                })
+                .done(function (data) {
+                    console.log(data);
+                    alert("Success");
+                    $("#class").html("");
+                    getclass(id);
+                });
+
+        });
+    </script>
+</body>
+
+
+
+
+
+</html>

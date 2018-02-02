@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html id="page" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>
+        Course Website
+    </title>
+
+
+
+</head>
+
+<body>
+
+
+    <select id="first">
+
+    </select>
+
+    <select id="second">
+
+    </select>
+
+    <select id="third">
+
+    </select>
+    <br/>
+
+    <h3> Classes : </h3>
+    <div id="classes">
+
+    </div>
+
+    <script>
+        function getEducation() {
+            $.get("./api/geteducation.php", function (data) {
+                // $(".result").html(data);
+                console.log(data);
+                //  alert("Load was performed.");
+                data = JSON.parse(data);
+
+                $.each(data, function (key, value) {
+                    $("#first").append('<option value=' + value.id + '>' + value.name + '</option>');
+                });
+            });
+
+        }
+
+        function getsemester(educatuionID) {
+            $.get("./api/getsemester.php?id=" + educatuionID, function (data) {
+                // $(".result").html(data);
+                console.log(data);
+                //  alert("Load was performed.");
+                data = JSON.parse(data);
+
+                $.each(data, function (key, value) {
+                    $("#second").append('<option value=' + value.id + '>' + value.name + '</option>');
+                });
+            });
+
+        }
+
+        function getcareer(semesterId) {
+
+            $.get("./api/getcareer.php?id=" + semesterId, function (data) {
+                // $(".result").html(data);
+                console.log(data);
+                //  alert("Load was performed.");
+                data = JSON.parse(data);
+
+                $.each(data, function (key, value) {
+                    $("#third").append('<option value=' + value.id + '>' + value.name + '</option>');
+                });
+            });
+
+        }
+
+        function getclasses(careerId) {
+            $.get("./api/getclasses.php?id=" + careerId, function (data) {
+                // $(".result").html(data);
+                console.log(data);
+                //  alert("Load was performed.");
+                data = JSON.parse(data);
+
+                $.each(data, function (key, value) {
+                    var avail = parseInt(value.seats_total) - parseInt(value.seats_taken);
+                    $("#classes").append('<div> <a href='+ "./registration.html?id="+ value.id + '><img src=' + value.image + '/> </a> <br>' + value.id +
+                        "  name : " + value.name + " description : " + value.description +
+                        " credit: " + value.credit_hours + " seats available :" + avail +
+                        '</div > <br/>');
+                });
+            });
+           
+        }
+
+        function clear() {
+            $("#second").html("");
+            $("#third").html("");
+            $("#classes").html("");
+
+        }
+
+        getEducation();
+        getsemester(1);
+        getcareer(1);
+        getclasses(1);
+    </script>
+    <script>
+        $('#first').on('change', function () {
+            //alert(this.value);
+            value = this.value;
+            clear();
+            getsemester(value);
+
+        })
+
+        $('#second').on('change', function () {
+            //alert(this.value);
+            value = this.value;
+            $("#third").html("");
+            //$("#classes").html("");
+            getcareer(value);
+        })
+
+
+        $('#third').on('change', function () {
+            //alert(this.value);
+            value = this.value;
+            $("#classes").html("");
+            getclasses(value);
+
+        })
+    </script>
+
+</body>
+
+
+
+
+
+
+</html>
