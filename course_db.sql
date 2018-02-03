@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Feb 03, 2018 at 12:04 AM
+-- Generation Time: Feb 03, 2018 at 09:35 AM
 -- Server version: 5.7.21-0ubuntu0.16.04.1
 -- PHP Version: 7.0.22-0ubuntu0.16.04.1
 
@@ -61,30 +61,31 @@ CREATE TABLE `classes` (
   `duration` int(11) NOT NULL DEFAULT '6',
   `seats_taken` int(11) NOT NULL DEFAULT '0',
   `seats_total` int(11) NOT NULL DEFAULT '30',
-  `image` varchar(500) NOT NULL DEFAULT 'http://via.placeholder.com/100x50'
+  `image` varchar(500) NOT NULL DEFAULT 'http://via.placeholder.com/100x50',
+  `in_name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `classes`
 --
 
-INSERT INTO `classes` (`id`, `name`, `career`, `description`, `credit_hours`, `duration`, `seats_taken`, `seats_total`, `image`) VALUES
-(1, 'PHP', 1, 'PHP Course for Beginers', 2, 6, 3, 30, 'http://via.placeholder.com/100x50'),
-(2, 'SQL', 1, 'SQL Course for beginers', 2, 6, 0, 30, 'http://via.placeholder.com/100x50'),
-(3, 'SQL', 2, 'SQL Course for beginers', 2, 6, 2, 30, 'http://via.placeholder.com/100x50'),
-(4, 'SQL', 3, 'SQL Course for beginers', 2, 6, 0, 30, 'http://via.placeholder.com/100x50'),
-(5, 'SQL', 4, 'SQL Course for beginers', 2, 6, 0, 30, 'http://via.placeholder.com/100x50'),
-(6, 'SQL', 5, 'SQL Course for beginers', 2, 6, 0, 30, 'http://via.placeholder.com/100x50'),
-(7, 'SQL', 6, 'SQL Course for beginers', 2, 6, 0, 30, 'http://via.placeholder.com/100x50'),
-(8, 'SQL', 7, 'SQL Course for beginers', 2, 6, 0, 30, 'http://via.placeholder.com/100x50'),
-(9, 'SQL', 8, 'SQL Course for beginers', 2, 6, 0, 30, 'http://via.placeholder.com/100x50'),
-(10, 'PHP', 2, 'PHP Course for Beginers', 2, 6, 3, 30, 'http://via.placeholder.com/100x50'),
-(11, 'PHP', 3, 'PHP Course for Beginers', 2, 6, 3, 30, 'http://via.placeholder.com/100x50'),
-(12, 'PHP', 4, 'PHP Course for Beginers', 2, 6, 3, 30, 'http://via.placeholder.com/100x50'),
-(13, 'PHP', 5, 'PHP Course for Beginers', 2, 6, 3, 30, 'http://via.placeholder.com/100x50'),
-(14, 'PHP', 6, 'PHP Course for Beginers', 2, 6, 3, 30, 'http://via.placeholder.com/100x50'),
-(15, 'PHP', 7, 'PHP Course for Beginers', 2, 6, 3, 30, 'http://via.placeholder.com/100x50'),
-(16, 'PHP', 8, 'PHP Course for Beginers', 2, 6, 3, 30, 'http://via.placeholder.com/100x50');
+INSERT INTO `classes` (`id`, `name`, `career`, `description`, `credit_hours`, `duration`, `seats_taken`, `seats_total`, `image`, `in_name`) VALUES
+(1, 'PHP', 1, 'PHP Course for Beginers', 2, 6, 5, 30, 'https://image.ibb.co/gf7qom/images.jpg', 'Sam, Petter'),
+(2, 'SQL', 1, 'SQL Course for beginers', 2, 6, 0, 30, 'https://image.ibb.co/fMh1uR/sql.png', 'Neel'),
+(3, 'SQL', 2, 'SQL Course for beginers', 2, 6, 2, 30, 'http://via.placeholder.com/100x50', ''),
+(4, 'SQL', 3, 'SQL Course for beginers', 2, 6, 0, 30, 'http://via.placeholder.com/100x50', ''),
+(5, 'SQL', 4, 'SQL Course for beginers', 2, 6, 0, 30, 'http://via.placeholder.com/100x50', ''),
+(6, 'SQL', 5, 'SQL Course for beginers', 2, 6, 0, 30, 'http://via.placeholder.com/100x50', ''),
+(7, 'SQL', 6, 'SQL Course for beginers', 2, 6, 0, 30, 'http://via.placeholder.com/100x50', ''),
+(8, 'SQL', 7, 'SQL Course for beginers', 2, 6, 0, 30, 'http://via.placeholder.com/100x50', ''),
+(9, 'SQL', 8, 'SQL Course for beginers', 2, 6, 0, 30, 'http://via.placeholder.com/100x50', ''),
+(10, 'PHP', 2, 'PHP Course for Beginers', 2, 6, 3, 30, 'http://via.placeholder.com/100x50', ''),
+(11, 'PHP', 3, 'PHP Course for Beginers', 2, 6, 3, 30, 'http://via.placeholder.com/100x50', ''),
+(12, 'PHP', 4, 'PHP Course for Beginers', 2, 6, 3, 30, 'http://via.placeholder.com/100x50', ''),
+(13, 'PHP', 5, 'PHP Course for Beginers', 2, 6, 3, 30, 'http://via.placeholder.com/100x50', ''),
+(14, 'PHP', 6, 'PHP Course for Beginers', 2, 6, 3, 30, 'http://via.placeholder.com/100x50', ''),
+(15, 'PHP', 7, 'PHP Course for Beginers', 2, 6, 3, 30, 'http://via.placeholder.com/100x50', ''),
+(16, 'PHP', 8, 'PHP Course for Beginers', 2, 6, 3, 30, 'http://via.placeholder.com/100x50', '');
 
 -- --------------------------------------------------------
 
