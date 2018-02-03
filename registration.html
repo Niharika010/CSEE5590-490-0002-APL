@@ -47,7 +47,7 @@
                 $.each(data, function (key, value) {
                     var avail = parseInt(value.seats_total) - parseInt(value.seats_taken);
                     $("#class").append('<div> <a href=' + "./registration.php?id=" + value.id +
-                        '><img src=' + value.image + '/> </a> <br>' + value.id +
+                        '><img style="width:30px;height:30px;" src=' + value.image + '/> </a> <br>' + value.id +
                         "  name : " + value.name + " description : " + value.description +
                         " credit: " + value.credit_hours + " seats available :" + avail +
                         '</div > <br/>');

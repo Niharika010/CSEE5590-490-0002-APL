@@ -90,8 +90,8 @@
                     var avail = parseInt(value.seats_total) - parseInt(value.seats_taken);
                     $("#classes").append('<div> <a href='+ "./registration.html?id="+ value.id + '><img src=' + value.image + '/> </a> <br>' + value.id +
                         "  name : " + value.name + " description : " + value.description +
-                        " credit: " + value.credit_hours + " seats available :" + avail +
-                        '</div > <br/>');
+                        " credit: " + value.credit_hours + ", seats available :" + avail +
+                        ',instructor: '+value.in_name+'</div >  <br/>');
                 });
             });
            
